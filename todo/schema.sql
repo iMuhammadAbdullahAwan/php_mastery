@@ -2,8 +2,8 @@ CREATE DATABASE todo;
 USE todo;
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
-    email VARCHAR(100)
+    username VARCHAR(50),
+    password VARCHAR(100)
 );
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,

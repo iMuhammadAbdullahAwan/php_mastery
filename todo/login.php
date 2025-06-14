@@ -7,16 +7,14 @@ if (isset($_SESSION['logged_in'])) {
 }
 
 $error = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    $usersFile = __DIR__ . '/users.json';
-    $users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
-
-    if (isset($users[$username]) && password_verify($password, $users[$username])) {
-        $_SESSION['logged_in'] = true;
-        $_SESSION['username'] = $username;
+    if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
+        $_SESSION["username"] = htmlspecialchars($_POST['username']);
+        $_SESSION["logged_in"] = true;
         header('Location: index.php');
         exit();
     } else {
