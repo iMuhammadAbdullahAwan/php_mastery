@@ -13,6 +13,7 @@ CREATE TABLE tasks (
     user_id INT NOT NULL,
     task VARCHAR(255) NOT NULL,
     status TINYINT(1) DEFAULT 0,
+    due_date DATE DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
